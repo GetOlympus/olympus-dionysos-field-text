@@ -2,8 +2,8 @@
 
 namespace GetOlympus\Field;
 
-use GetOlympus\Hera\Controllers\Field;
-use GetOlympus\Hera\Controllers\Translate;
+use GetOlympus\Hera\Field\Controller\Field;
+use GetOlympus\Hera\Translate\Controller\Translate;
 
 /**
  * Builds Text field.
@@ -42,7 +42,7 @@ class Text extends Field
         // Build defaults
         $defaults = [
             'id' => '',
-            'title' => Translate::t('text.title'),
+            'title' => Translate::t('text.title', [], 'textfield'),
             'default' => '',
             'description' => '',
             'options' => [
