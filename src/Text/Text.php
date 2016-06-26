@@ -20,22 +20,20 @@ use GetOlympus\Hera\Translate\Controller\Translate;
 class Text extends Field
 {
     /**
-     * @var string
+     * Prepare variables.
      */
-    protected $faIcon = 'fa-text-width';
-
-    /**
-     * @var string
-     */
-    protected $template = 'text.html.twig';
+    protected function setVars()
+    {
+        $this->getModel()->setFaIcon('fa-text-width');
+        $this->getModel()->setStyle('css'.S.'text.css');
+        $this->getModel()->setTemplate('text.html.twig');
+    }
 
     /**
      * Prepare HTML component.
      *
      * @param array $content
      * @param array $details
-     *
-     * @since 0.0.1
      */
     protected function getVars($content, $details = [])
     {
@@ -56,18 +54,13 @@ class Text extends Field
             'attrs' => '',
             'placeholder' => '',
             'maxlength' => '',
-
-            // details
-            'post' => 0,
-            'prefix' => '',
-            'template' => 'pages',
         ];
 
         // Build defaults data
         $vars = array_merge($defaults, $content);
 
         // Retrieve field value
-        $vars['val'] = $this->getValue($details, $vars['default'], $content['id']);
+        $vars['val'] = $this->getValue($content['id'], $details, $vars['default']);
 
         // Attributes
         $vars['attrs'] = 'size="30"';
@@ -78,22 +71,16 @@ class Text extends Field
         $type = 'text' !== $vars['options']['type'] ? $vars['options']['type'] : 'text';
 
         // Check options
-        if ('number' == $type || 'range' == $type) {
+        if ('number' === $type || 'range' === $type) {
             $vars['type'] = $type;
 
             // Special variables
-            $vars['attrs'] .= !empty($vars['options']['min']) 
-                ? ' min="'.$vars['options']['min'].'"' 
-                : '';
-            $vars['attrs'] .= !empty($vars['options']['max']) 
-                ? ' max="'.$vars['options']['max'].'"' 
-                : '';
-            $vars['attrs'] .= !empty($vars['options']['step']) 
-                ? ' step="'.$vars['options']['step'].'"' 
-                : ' step="1"';
+            $vars['attrs'] .= !empty($vars['options']['min']) ? ' min="'.$vars['options']['min'].'"' : '';
+            $vars['attrs'] .= !empty($vars['options']['max']) ? ' max="'.$vars['options']['max'].'"' : '';
+            $vars['attrs'] .= !empty($vars['options']['step']) ? ' step="'.$vars['options']['step'].'"' : ' step="1"';
         }
 
         // Update vars
-        $this->getField()->setVars($vars);
+        $this->getModel()->setVars($vars);
     }
 }
