@@ -68,12 +68,11 @@ class Text extends Field
         $vars['attrs'] .= !empty($vars['maxlength']) ? ' maxlength="'.$vars['maxlength'].'"' : '';
 
         // Check type
-        $type = 'text' !== $vars['options']['type'] ? $vars['options']['type'] : 'text';
+        $type = !empty($vars['options']['type']) ? $vars['options']['type'] : 'text';
+        $vars['type'] = $type;
 
         // Check options
         if ('number' === $type || 'range' === $type) {
-            $vars['type'] = $type;
-
             // Special variables
             $vars['attrs'] .= !empty($vars['options']['min']) ? ' min="'.$vars['options']['min'].'"' : '';
             $vars['attrs'] .= !empty($vars['options']['max']) ? ' max="'.$vars['options']['max'].'"' : '';
