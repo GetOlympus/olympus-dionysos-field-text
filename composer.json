@@ -1,8 +1,8 @@
 {
   "name": "getolympus/olympus-text-field",
   "type": "olympus-field",
-  "description": "[READ-ONLY] Text field, this component is a part of the Olympus Hera WordPress library.",
-  "keywords": ["olympus", "hera", "field", "text", "framework", "php"],
+  "description": "[READ-ONLY] Text field, this component is a part of the Olympus Zeus Core framework.",
+  "keywords": ["olympus", "zeus", "field", "text", "framework", "php"],
   "homepage": "https://github.com/GetOlympus/olympus-text-field",
   "license": "MIT",
   "authors": [
@@ -23,7 +23,7 @@
   },
   "minimum-stability": "stable",
   "require": {
-    "getolympus/olympus-hera": "~0.0.1",
+    "getolympus/olympus-zeus-core": "~0.0.1",
     "twig/twig": "~1.0"
   },
   "require-dev": {
