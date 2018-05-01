@@ -71,11 +71,11 @@ class Text extends Field
         $vars['attrs'] .= !empty($vars['maxlength']) ? ' maxlength="'.$vars['maxlength'].'"' : '';
 
         // Class
-        $vars['class'] = $vars['options']['class'];
+        $vars['class'] = !empty($vars['options']['class']) ? $vars['options']['class'] : '';
 
         // Prepend & Append
-        $vars['before'] = $vars['options']['before'];
-        $vars['after'] = $vars['options']['after'];
+        $vars['before'] = !empty($vars['options']['before']) ? $vars['options']['before'] : '';
+        $vars['after'] = !empty($vars['options']['after']) ? $vars['options']['after'] : '';
 
         // Check type
         $type = !empty($vars['options']['type']) ? $vars['options']['type'] : 'text';
