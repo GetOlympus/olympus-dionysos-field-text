@@ -48,6 +48,9 @@ class Text extends Field
                 'min' => '',
                 'max' => '',
                 'step' => '',
+                'class' => '',
+                'before' => '',
+                'after' => '',
             ],
 
             // options
@@ -66,6 +69,13 @@ class Text extends Field
         $vars['attrs'] = 'size="30"';
         $vars['attrs'] .= !empty($vars['placeholder']) ? ' placeholder="'.$vars['placeholder'].'"' : '';
         $vars['attrs'] .= !empty($vars['maxlength']) ? ' maxlength="'.$vars['maxlength'].'"' : '';
+
+        // Class
+        $vars['class'] = $vars['options']['class'];
+
+        // Prepend & Append
+        $vars['before'] = $vars['options']['before'];
+        $vars['after'] = $vars['options']['after'];
 
         // Check type
         $type = !empty($vars['options']['type']) ? $vars['options']['type'] : 'text';
