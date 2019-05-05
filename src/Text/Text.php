@@ -71,22 +71,22 @@ class Text extends Field
         $vars['attrs'] .= !empty($vars['maxlength']) ? ' maxlength="'.$vars['maxlength'].'"' : '';
 
         // Class
-        $vars['class'] = !empty($vars['options']['class']) ? $vars['options']['class'] : '';
+        $vars['class'] = isset($vars['options']['class']) && !empty($vars['options']['class']) ? $vars['options']['class'] : '';
 
         // Prepend & Append
-        $vars['before'] = !empty($vars['options']['before']) ? $vars['options']['before'] : '';
-        $vars['after'] = !empty($vars['options']['after']) ? $vars['options']['after'] : '';
+        $vars['before'] = isset($vars['options']['before']) && !empty($vars['options']['before']) ? $vars['options']['before'] : '';
+        $vars['after'] = isset($vars['options']['after']) && !empty($vars['options']['after']) ? $vars['options']['after'] : '';
 
         // Check type
-        $type = !empty($vars['options']['type']) ? $vars['options']['type'] : 'text';
+        $type = isset($vars['options']['type']) && !empty($vars['options']['type']) ? $vars['options']['type'] : 'text';
         $vars['type'] = $type;
 
         // Check options
         if ('number' === $type || 'range' === $type) {
             // Special variables
-            $vars['attrs'] .= !empty($vars['options']['min']) ? ' min="'.$vars['options']['min'].'"' : '';
-            $vars['attrs'] .= !empty($vars['options']['max']) ? ' max="'.$vars['options']['max'].'"' : '';
-            $vars['attrs'] .= !empty($vars['options']['step']) ? ' step="'.$vars['options']['step'].'"' : ' step="1"';
+            $vars['attrs'] .= isset($vars['options']['min']) && !empty($vars['options']['min']) ? ' min="'.$vars['options']['min'].'"' : '';
+            $vars['attrs'] .= isset($vars['options']['max']) && !empty($vars['options']['max']) ? ' max="'.$vars['options']['max'].'"' : '';
+            $vars['attrs'] .= isset($vars['options']['step']) && !empty($vars['options']['step']) ? ' step="'.$vars['options']['step'].'"' : ' step="1"';
         }
 
         // Update vars
