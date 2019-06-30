@@ -1,14 +1,18 @@
 {% extends template_path %}
 
-{% block id %}{{ id }}_text_{{ type }}{% endblock %}
-{% block label %}<label for="{{ id }}">{{ title|raw }}</label>{% endblock %}
+{% block id %}{{ identifier }}{% endblock %}
+{% block label %}<label for="{{ identifier }}">{{ title|raw }}</label>{% endblock %}
 
 {% block field %}
-    <div class="olh-field-content text {{ type }}">
-        {{ before|raw }}<input type="{{ type }}" name="{{ name }}" id="{{ id }}" value="{{ val|raw }}" class="regular-text {{ class }}" {{ attrs|raw }} />{{ after|raw }}
+    <div class="olz-field text {{ type }}">
+        {% if type == 'hidden' %}
+            <input type="{{ type }}" name="{{ name }}" value="{{ value }}" />
+        {% else %}
+            {{ before|raw }}<input type="{{ type }}" name="{{ name }}" id="{{ identifier }}" value="{{ value|raw }}" class="regular-text {{ class }}" {{ attrs|raw }} />{{ after|raw }}
 
-        {% if type == 'range' %}
-            <output id="{{ id }}_output">{{ val }}</output>
+            {% if type == 'range' %}
+                <output id="{{ identifier }}_output">{{ value }}</output>
+            {% endif %}
         {% endif %}
     </div>
 {% endblock %}

@@ -20,76 +20,104 @@ use GetOlympus\Zeus\Translate\Controller\Translate;
 class Text extends Field
 {
     /**
-     * Prepare variables.
+     * @var string
      */
-    protected function setVars()
-    {
-        $this->getModel()->setFaIcon('fa-text-width');
-        $this->getModel()->setStyle('css'.S.'text.css');
-        $this->getModel()->setTemplate('text.html.twig');
-    }
+    protected $style = 'css'.S.'text.css';
 
     /**
-     * Prepare HTML component.
-     *
-     * @param array $content
-     * @param array $details
+     * @var string
      */
-    protected function getVars($content, $details = [])
+    protected $template = 'text.html.twig';
+
+    /**
+     * @var string
+     */
+    protected $textdomain = 'textfield';
+
+    /**
+     * Prepare defaults.
+     *
+     * @return array
+     */
+    protected function getDefaults()
     {
-        // Build defaults
-        $defaults = [
-            'id' => '',
-            'title' => Translate::t('text.title', [], 'textfield'),
+        return [
+            'title' => Translate::t('text.title', $this->textdomain),
             'default' => '',
             'description' => '',
-            'options' => [
+            'maxlength' => '',
+            'placeholder' => '',
+            'settings' => [
                 'type' => 'text',
                 'min' => '',
                 'max' => '',
                 'step' => '',
+                'display' => false,
                 'class' => '',
                 'before' => '',
                 'after' => '',
             ],
+        ];
+    }
 
-            // options
-            'attrs' => '',
-            'placeholder' => '',
-            'maxlength' => '',
+    /**
+     * Prepare variables.
+     *
+     * @param  object  $value
+     * @param  array   $contents
+     *
+     * @return array
+     */
+    protected function getVars($value, $contents)
+    {
+        // Available input types
+        $types = [
+            'date', 'datetime-local', 'datetime', 'email',
+            'hidden', 'month', 'number', 'password', 'range',
+            'search', 'tel', 'text', 'time', 'week'
         ];
 
-        // Build defaults data
-        $vars = array_merge($defaults, $content);
+        // Get contents
+        $vars = $contents;
 
-        // Retrieve field value
-        $vars['val'] = $this->getValue($content['id'], $details, $vars['default']);
+        // Class
+        $vars['class'] = isset($contents['settings']['class']) ? $contents['settings']['class'] : '';
+
+        // Prepend & Append
+        $vars['before'] = isset($contents['settings']['before']) ? $contents['settings']['before'] : '';
+        $vars['after'] = isset($contents['settings']['after']) ? $contents['settings']['after'] : '';
+
+        // Type -- Special case on "datetime-local" which can be "datetime" as alias
+        $vars['type'] = isset($contents['settings']['type']) ? $contents['settings']['type'] : 'text';
+        $vars['type'] = in_array($vars['type'], $types) ? $vars['type'] : 'text';
+        $vars['type'] = 'datetime' === $vars['type'] ? 'datetime-local' : $vars['type'];
 
         // Attributes
         $vars['attrs'] = 'size="30"';
-        $vars['attrs'] .= !empty($vars['placeholder']) ? ' placeholder="'.$vars['placeholder'].'"' : '';
-        $vars['attrs'] .= !empty($vars['maxlength']) ? ' maxlength="'.$vars['maxlength'].'"' : '';
+        $vars['attrs'] .= !empty($contents['placeholder']) ? ' placeholder="'.$contents['placeholder'].'"' : '';
+        $vars['attrs'] .= !empty($contents['maxlength']) ? ' maxlength="'.$contents['maxlength'].'"' : '';
 
-        // Class
-        $vars['class'] = isset($vars['options']['class']) && !empty($vars['options']['class']) ? $vars['options']['class'] : '';
+        // Hidden case
+        if ('hidden' === $vars['type']) {
+            // Get description
+            $vars['description'] = isset($contents['settings']['display']) && $contents['settings']['display']
+                ? sprintf(Translate::t('text.hidden.description.show', $this->textdomain), $value)
+                : Translate::t('text.hidden.description.hide', $this->textdomain);
+        }
 
-        // Prepend & Append
-        $vars['before'] = isset($vars['options']['before']) && !empty($vars['options']['before']) ? $vars['options']['before'] : '';
-        $vars['after'] = isset($vars['options']['after']) && !empty($vars['options']['after']) ? $vars['options']['after'] : '';
+        // Number and Range case
+        if ('number' === $vars['type'] || 'range' === $vars['type']) {
+            $contents['settings']['step'] = isset($contents['settings']['step']) ? $contents['settings']['step'] : 1;
 
-        // Check type
-        $type = isset($vars['options']['type']) && !empty($vars['options']['type']) ? $vars['options']['type'] : 'text';
-        $vars['type'] = $type;
+            $vars['attrs'] .= isset($contents['settings']['min']) ? ' min="'.$contents['settings']['min'].'"' : '';
+            $vars['attrs'] .= isset($contents['settings']['max']) ? ' max="'.$contents['settings']['max'].'"' : '';
+            $vars['attrs'] .= ' step="'.$contents['settings']['step'].'"';
 
-        // Check options
-        if ('number' === $type || 'range' === $type) {
-            // Special variables
-            $vars['attrs'] .= isset($vars['options']['min']) && !empty($vars['options']['min']) ? ' min="'.$vars['options']['min'].'"' : '';
-            $vars['attrs'] .= isset($vars['options']['max']) && !empty($vars['options']['max']) ? ' max="'.$vars['options']['max'].'"' : '';
-            $vars['attrs'] .= isset($vars['options']['step']) && !empty($vars['options']['step']) ? ' step="'.$vars['options']['step'].'"' : ' step="1"';
+            $vars['before'] = isset($contents['settings']['min']) ? $contents['settings']['min'] : $vars['before'];
+            $vars['after'] = isset($contents['settings']['max']) ? $contents['settings']['max'] : $vars['after'];
         }
 
         // Update vars
-        $this->getModel()->setVars($vars);
+        return $vars;
     }
 }

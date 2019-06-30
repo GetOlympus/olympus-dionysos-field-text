@@ -1,8 +1,7 @@
 # Text Field ![For Olympus](https://img.shields.io/badge/for-Olympus-44cc11.svg?style=flat-square) ![For WordPress](https://img.shields.io/badge/for-WordPress-00aadc.svg?style=flat-square)
 
 _This component is a part of the [**Olympus Zeus Core**](https://github.com/GetOlympus/Zeus-Core) **WordPress** framework._  
-
-![Thumbnail](https://www.filepicker.io/api/file/s3EVlBISr2WHO8IO5sAN)
+_It uses the default WordPress text field to display range, text, datetime, tel, and more fields._  
 
 ---
 

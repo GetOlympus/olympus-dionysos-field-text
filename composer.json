@@ -1,8 +1,8 @@
 {
   "name": "getolympus/olympus-text-field",
   "type": "olympus-field",
-  "description": "[READ-ONLY] Text field, this component is a part of the Olympus Zeus Core framework.",
-  "keywords": ["olympus", "zeus", "field", "text", "framework", "php"],
+  "description": "Text field, this component is a part of the Olympus Zeus Core framework.",
+  "keywords": ["olympus-zeus", "text", "field", "custom", "date", "datetime-local", "datetime", "email", "hidden", "month", "number", "password", "range", "search", "tel", "time", "week", "framework", "php", "wordpress"],
   "homepage": "https://github.com/GetOlympus/olympus-text-field",
   "license": "MIT",
   "authors": [

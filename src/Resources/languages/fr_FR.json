@@ -1,0 +1,5 @@
+{
+    "text.title": "Texte",
+    "text.hidden.description.show": "Champ caché dont la valeur stoquée est : <code>%s</code>",
+    "text.hidden.description.hide": "Champ caché, sa valeur est stoquée."
+}

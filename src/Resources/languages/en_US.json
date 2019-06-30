@@ -1,0 +1,5 @@
+{
+    "text.title": "Text",
+    "text.hidden.description.show": "Hidden field with its value stored: <code>%s</code>",
+    "text.hidden.description.hide": "Hidden field, its value is stored."
+}

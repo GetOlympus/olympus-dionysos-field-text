@@ -5,19 +5,15 @@
  * Achraf Chouk (https://github.com/crewstyle)
  */
 
-@gray: #999999;
-
-.olh-field-content.text {
-    input {
-        width: 100%;
+.olz-field.text {
+    input[type="number"],
+    input[type="range"] {
+        margin: 0 5px;
+        vertical-align: middle;
     }
 
-    &.range {
-        output {
-            color: @gray;
-            display: inline-block;
-            margin-left: 10px;
-            vertical-align: 6px;
-        }
+    output {
+        font-weight: 700;
+        margin-left: 20px;
     }
 }
