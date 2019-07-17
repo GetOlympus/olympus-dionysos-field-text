@@ -24,11 +24,11 @@ Use the following lines to add a `text field` in your **WordPress** admin pages 
 
 ```php
 return \GetOlympus\Field\Text::build('my_text_field_id', [
-    'title' => 'What do you like?',
-    'default' => 'Penguins, I am sure they\'re gonna dominate the World!',
+    'title'       => 'What do you like?',
+    'default'     => 'Penguins, I am sure they\'re gonna dominate the World!',
     'description' => 'Put in here everything you want.',
     'placeholder' => 'McDonald\'s as well',
-    'type' => 'text',
+    'type'        => 'text',
 
     /**
      * Settings definition
