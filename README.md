@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="https://img.icons8.com/nolan/2x/text-box.png">
+</p>
+
 # Text Field
 > This component is a part of the [**Olympus Zeus Core**][zeus-url] **WordPress** framework.  
 > It uses the default WordPress text field to display password, range, text, datetime, tel, and more fields.
@@ -11,7 +15,7 @@
 Using `composer` in your PHP project:
 
 ```sh
-composer install getolympus/olympus-text-field
+composer require getolympus/olympus-text-field
 ```
 
 ## Field initialization
@@ -242,11 +246,14 @@ echo $text;
 
 ## Release History
 
+* 0.0.16
+- [x] FIX: remove twig dependency from composer
+
+* 0.0.15
+- [x] FIX: remove zeus-core dependency from composer
+
 * 0.0.14
 - [x] ADD: new version with dedicated type settings
-
-* 0.0.13
-- [x] ADD: new version compatible with Zeus-Core latest version
 
 ## Authors and Copyright
 
@@ -256,8 +263,8 @@ Achraf Chouk
 Please, read [LICENSE][license-blob] for more information.  
 [![MIT][license-image]][license-url]
 
-[https://github.com/crewstyle](https://github.com/crewstyle)  
-[http://fr.linkedin.com/in/achrafchouk](http://fr.linkedin.com/in/achrafchouk)
+<https://github.com/crewstyle>  
+<https://fr.linkedin.com/in/achrafchouk>
 
 ## Contributing
 
