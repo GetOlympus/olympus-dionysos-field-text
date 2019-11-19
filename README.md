@@ -246,6 +246,9 @@ echo $text;
 
 ## Release History
 
+* 0.0.17
+- [x] FIX: display in widget area and globally as number type
+
 * 0.0.16
 - [x] FIX: remove twig dependency from composer
 

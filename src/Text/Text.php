@@ -102,7 +102,7 @@ class Text extends Field
             $vars['attrs'] .= !empty($vars['settings']['step']) ? ' step="'.$vars['settings']['step'].'"' : '';
 
             // Number and Range case
-            if (in_array($vars['type'], ['number', 'range'])) {
+            if (in_array($vars['type'], ['range'])) {
                 $vars['before'] = $vars['before'].' '.$vars['settings']['min'];
                 $vars['after']  = $vars['settings']['max'].' '.$vars['after'];
             }

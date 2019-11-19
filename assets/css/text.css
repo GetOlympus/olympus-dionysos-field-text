@@ -3,4 +3,4 @@
  *
  * Copyright 2016 Achraf Chouk
  * Achraf Chouk (https://github.com/crewstyle)
- */.olz-field.text input[type=number],.olz-field.text input[type=range]{margin:0 5px;vertical-align:middle}.olz-field.text output{font-weight:700;margin-left:20px}
+ */.olz-field.text input{max-width:100%}.olz-field.text input[type=range]{vertical-align:middle}.olz-field.text output{font-weight:700;margin-left:20px}

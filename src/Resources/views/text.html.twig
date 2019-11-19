@@ -9,10 +9,6 @@
             <input type="{{ type }}" name="{{ name }}" value="{{ value }}" />
         {% else %}
             {{ before|raw }}<input type="{{ type }}" name="{{ name }}" id="{{ identifier }}" value="{{ value|raw }}" class="regular-text{{ class }}"{{ attrs|raw }} />{{ after|raw }}
-
-            {% if type == 'range' %}
-                <output id="{{ identifier }}_output">{{ value }}</output>
-            {% endif %}
         {% endif %}
     </div>
 {% endblock %}
