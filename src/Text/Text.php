@@ -1,17 +1,16 @@
 <?php
 
-namespace GetOlympus\Field;
+namespace GetOlympus\Dionysos\Field;
 
-use GetOlympus\Zeus\Field\Controller\Field;
-use GetOlympus\Zeus\Translate\Controller\Translate;
+use GetOlympus\Zeus\Field\Field;
 
 /**
  * Builds Text field.
  *
- * @package Field
+ * @package    DionysosField
  * @subpackage Text
- * @author Achraf Chouk <achrafchouk@gmail.com>
- * @since 0.0.1
+ * @author     Achraf Chouk <achrafchouk@gmail.com>
+ * @since      0.0.1
  *
  */
 
@@ -37,10 +36,10 @@ class Text extends Field
      *
      * @return array
      */
-    protected function getDefaults()
+    protected function getDefaults() : array
     {
         return [
-            'title' => Translate::t('text.title', $this->textdomain),
+            'title' => parent::t('text.title', $this->textdomain),
             'default' => '',
             'description' => '',
             'placeholder' => '',
@@ -57,7 +56,7 @@ class Text extends Field
      *
      * @return array
      */
-    protected function getVars($value, $contents)
+    protected function getVars($value, $contents) : array
     {
         // Available input types
         $types = [
@@ -78,8 +77,8 @@ class Text extends Field
         if ('hidden' === $vars['type']) {
             // Set custom description
             $description = $vars['settings']['display']
-                ? sprintf(Translate::t('text.hidden.description.show', $this->textdomain), $value)
-                : Translate::t('text.hidden.description.hide', $this->textdomain);
+                ? sprintf(parent::t('text.hidden.description.show', $this->textdomain), $value)
+                : parent::t('text.hidden.description.hide', $this->textdomain);
 
             // Get full description
             $vars['description'] = '<em>'.$description.'</em><br/>'.$vars['description'];
@@ -130,7 +129,7 @@ class Text extends Field
      *
      * @return array
      */
-    protected function getSettingsFromType($type, $settings)
+    protected function getSettingsFromType($type, $settings) : array
     {
         // Default settings
         $defaults = [

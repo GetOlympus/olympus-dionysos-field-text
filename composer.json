@@ -1,9 +1,9 @@
 {
-  "name": "getolympus/olympus-text-field",
+  "name": "getolympus/olympus-dionysos-field-text",
   "type": "olympus-field",
-  "description": "Text field, this component is a part of the Olympus Zeus Core framework.",
-  "keywords": ["olympus-zeus", "text", "field", "custom", "date", "datetime-local", "datetime", "email", "hidden", "month", "number", "password", "range", "search", "tel", "time", "week", "framework", "php", "wordpress"],
-  "homepage": "https://github.com/GetOlympus/olympus-text-field",
+  "description": "Text field, this component is a part of the Olympus Dionysos fields.",
+  "keywords": ["olympus", "dionysos", "text", "field", "custom", "date", "datetime-local", "datetime", "email", "hidden", "month", "number", "password", "range", "search", "tel", "time", "week", "framework", "php", "wordpress"],
+  "homepage": "https://github.com/GetOlympus/olympus-dionysos-field-text",
   "license": "MIT",
   "authors": [
     {
@@ -13,7 +13,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "GetOlympus\\Field\\": "src/Text/"
+      "GetOlympus\\Dionysos\\Field\\": "src/Text/"
     }
   },
   "extra": {
