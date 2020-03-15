@@ -4,11 +4,44 @@
 {% block label %}<label for="{{ identifier }}">{{ title|raw }}</label>{% endblock %}
 
 {% block field %}
-    <div class="olz-field text {{ type }}">
+    <div id="{{ identifier }}-text" class="dionysos-field text {{ type }}">
         {% if type == 'hidden' %}
             <input type="{{ type }}" name="{{ name }}" value="{{ value }}" />
         {% else %}
-            {{ before|raw }}<input type="{{ type }}" name="{{ name }}" id="{{ identifier }}" value="{{ value|raw }}" class="regular-text{{ class }}"{{ attrs|raw }} />{{ after|raw }}
+            {% if before is not empty %}
+                <div class="text-prepend">{{ before|raw }}</div>
+            {% endif %}
+
+            <input type="{{ type }}" name="{{ name }}" id="{{ identifier }}" value="{{ value|raw }}" class="{{ type == 'range' or type == 'number' ? 'all-options' : 'large-text' }}{{ class }}"{{ attrs|raw }} />
+
+            {% if type == 'range' %}
+                <input type="number" id="{{ identifier }}-val" value="{{ value|raw }}" class="small-text"{{ attrs|raw }} />
+            {% endif %}
+
+            {% if after is not empty %}
+                <div class="text-append">{{ after|raw }}</div>
+            {% endif %}
+        {% endif %}
+
+        {% if type == 'url' and settings.datalist is not empty %}
+            <datalist id="{{ identifier }}-list">
+                {% for item in settings.datalist %}
+                    <option value="{{ item }}" />
+                {% endfor %}
+            </datalist>
+        {% endif %}
+
+        {% if type == 'range' %}
+            <script>
+                (function($) {
+                    $(document).ready(function() {
+                        $("#{{ identifier }}-text").dionysosRange({
+                            source: "#{{ identifier }}",
+                            value: "#{{ identifier }}-val"
+                        });
+                    });
+                })(jQuery);
+            </script>
         {% endif %}
     </div>
 {% endblock %}

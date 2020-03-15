@@ -19,6 +19,11 @@ class Text extends Field
     /**
      * @var string
      */
+    protected $script = 'js'.S.'range.js';
+
+    /**
+     * @var string
+     */
     protected $style = 'css'.S.'text.css';
 
     /**
@@ -61,7 +66,7 @@ class Text extends Field
         // Available input types
         $types = [
             'date', 'datetime-local', 'email', 'hidden', 'month', 'number',
-            'password', 'range', 'search', 'tel', 'text', 'time', 'week'
+            'password', 'range', 'search', 'tel', 'text', 'time', 'url', 'week'
         ];
 
         // Get contents
@@ -94,31 +99,51 @@ class Text extends Field
         // Attributes
         $vars['attrs'] = '';
         $vars['attrs'] .= $vars['settings']['readonly'] ? ' readonly' : '';
-
-        if (in_array($vars['type'], ['date', 'datetime-local', 'month', 'number', 'range', 'time', 'week'])) {
-            $vars['attrs'] .= !empty($vars['settings']['max']) ? ' max="'.$vars['settings']['max'].'"' : '';
-            $vars['attrs'] .= !empty($vars['settings']['min']) ? ' min="'.$vars['settings']['min'].'"' : '';
-            $vars['attrs'] .= !empty($vars['settings']['step']) ? ' step="'.$vars['settings']['step'].'"' : '';
-
-            // Number and Range case
-            if (in_array($vars['type'], ['range'])) {
-                $vars['before'] = $vars['before'].' '.$vars['settings']['min'];
-                $vars['after']  = $vars['settings']['max'].' '.$vars['after'];
-            }
-        } else if (in_array($vars['type'], ['email', 'password', 'search', 'tel', 'text'])) {
-            $vars['attrs'] .= $vars['settings']['maxlength'] ? ' maxlength="'.$vars['settings']['maxlength'].'"' : '';
-            $vars['attrs'] .= $vars['settings']['minlength'] ? ' minlength="'.$vars['settings']['minlength'].'"' : '';
-            $vars['attrs'] .= $vars['settings']['multiple'] ? ' multiple' : '';
-            $vars['attrs'] .= !empty($vars['settings']['pattern']) ? ' pattern="'.$vars['settings']['pattern'].'"' : '';
-            $vars['attrs'] .= $vars['settings']['size'] ? ' size="'.$vars['settings']['size'].'"' : '';
-            $vars['attrs'] .= $vars['settings']['spellcheck'] ? ' spellcheck' : '';
-        }
+        $vars['attrs'] .= $this->getAttrsFromType($vars);
 
         // Custom attributes
         $vars['attrs'] .= ' '.$vars['settings']['attrs'];
 
         // Update vars
         return $vars;
+    }
+
+    /**
+     * Define attributes.
+     *
+     * @param  array   $vars
+     *
+     * @return string
+     */
+    protected function getAttrsFromType($vars) : string
+    {
+        // Date attributes
+        if (in_array($vars['type'], ['date', 'datetime-local', 'month', 'number', 'range', 'time', 'week'])) {
+            $attrs  = !empty($vars['settings']['max']) ? ' max="'.$vars['settings']['max'].'"' : '';
+            $attrs .= !empty($vars['settings']['min']) ? ' min="'.$vars['settings']['min'].'"' : '';
+            $attrs .= !empty($vars['settings']['step']) ? ' step="'.$vars['settings']['step'].'"' : '';
+
+            return $attrs;
+        }
+
+        // Special attributes
+        if (in_array($vars['type'], ['email', 'password', 'search', 'tel', 'text'])) {
+            $attrs  = $vars['settings']['maxlength'] ? ' maxlength="'.$vars['settings']['maxlength'].'"' : '';
+            $attrs .= $vars['settings']['minlength'] ? ' minlength="'.$vars['settings']['minlength'].'"' : '';
+            $attrs .= $vars['settings']['multiple'] ? ' multiple' : '';
+            $attrs .= !empty($vars['settings']['pattern']) ? ' pattern="'.$vars['settings']['pattern'].'"' : '';
+            $attrs .= $vars['settings']['size'] ? ' size="'.$vars['settings']['size'].'"' : '';
+            $attrs .= $vars['settings']['spellcheck'] ? ' spellcheck' : '';
+
+            return $attrs;
+        }
+
+        // URL attributes
+        if ('url' === $vars['type'] && !empty($vars['settings']['datalist'])) {
+            return ' list="'.$vars['identifier'].'-list"';
+        }
+
+        return '';
     }
 
     /**
@@ -137,6 +162,7 @@ class Text extends Field
             'after'      => '',
             'before'     => '',
             'class'      => '',
+            'datalist'   => [],
             'display'    => false,
             'max'        => 0,
             'maxlength'  => 0,
