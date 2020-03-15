@@ -3,4 +3,4 @@
  *
  * Copyright 2016 Achraf Chouk
  * Achraf Chouk (https://github.com/crewstyle)
- */.olz-field.text input{max-width:100%}.olz-field.text input[type=range]{vertical-align:middle}.olz-field.text output{font-weight:700;margin-left:20px}
+ */.dionysos-field.text{align-items:center;display:flex}.dionysos-field.text .text-append,.dionysos-field.text .text-prepend{margin:0;padding-left:10px;padding-right:10px;z-index:0}.dionysos-field.text input{z-index:1}.dionysos-field.text.number{align-items:stretch}.dionysos-field.text.number .text-append,.dionysos-field.text.number .text-prepend{background:#f9f9f9;border:1px solid #ddd;line-height:28px}.dionysos-field.text.number .text-prepend{border-radius:3px 0 0 3px;border-right-width:0;margin-right:-2px}.dionysos-field.text.number .text-append{border-left-width:0;border-radius:0 3px 3px 0;margin-left:-2px}.dionysos-field.text.range input[type=number]{margin:0 0 0 5px}

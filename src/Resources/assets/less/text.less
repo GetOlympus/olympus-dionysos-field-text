@@ -5,17 +5,46 @@
  * Achraf Chouk (https://github.com/crewstyle)
  */
 
-.olz-field.text {
-    input {
-        max-width: 100%;
+.dionysos-field.text {
+    align-items: center;
+    display: flex;
 
-        &[type="range"] {
-            vertical-align: middle;
+    .text-prepend, .text-append {
+        margin: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+        z-index: 0;
+    }
+
+    input {
+        z-index: 1;
+    }
+
+    &.number {
+        align-items: stretch;
+
+        .text-prepend, .text-append {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            line-height: 28px;
+        }
+
+        .text-prepend {
+            border-radius: 3px 0 0 3px;
+            border-right-width: 0;
+            margin-right: -2px;
+        }
+
+        .text-append {
+            border-left-width: 0;
+            border-radius: 0 3px 3px 0;
+            margin-left: -2px;
         }
     }
 
-    output {
-        font-weight: 700;
-        margin-left: 20px;
+    &.range {
+        input[type="number"] {
+            margin: 0 0 0 5px;
+        }
     }
 }
