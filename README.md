@@ -263,15 +263,15 @@ echo $text;
 
 ## Release History
 
+0.0.20
+- Fix range and number stepper which can contains float value
+
 0.0.19
 - Add new `url` type with `datalist` suggestions
 
 0.0.18
 - New Olympus components compatibility
 - Change repository to be a part of Dionysos fields
-
-0.0.17
-- FIX: display in widget area and globally as number type
 
 ## Contributing
 
