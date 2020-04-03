@@ -119,9 +119,9 @@ class Text extends Field
     {
         // Date attributes
         if (in_array($vars['type'], ['date', 'datetime-local', 'month', 'number', 'range', 'time', 'week'])) {
-            $attrs  = !empty($vars['settings']['max']) ? ' max="'.$vars['settings']['max'].'"' : '';
-            $attrs .= !empty($vars['settings']['min']) ? ' min="'.$vars['settings']['min'].'"' : '';
-            $attrs .= !empty($vars['settings']['step']) ? ' step="'.$vars['settings']['step'].'"' : '';
+            $attrs  = isset($vars['settings']['max']) ? ' max="'.$vars['settings']['max'].'"' : '';
+            $attrs .= isset($vars['settings']['min']) ? ' min="'.$vars['settings']['min'].'"' : '';
+            $attrs .= isset($vars['settings']['step']) ? ' step="'.$vars['settings']['step'].'"' : '';
 
             return $attrs;
         }
@@ -164,16 +164,16 @@ class Text extends Field
             'class'      => '',
             'datalist'   => [],
             'display'    => false,
-            'max'        => 0,
+            'max'        => 0.0,
             'maxlength'  => 0,
-            'min'        => 0,
+            'min'        => 0.0,
             'minlength'  => 0,
             'multiple'   => false,
             'pattern'    => '',
             'readonly'   => false,
             'size'       => 0,
             'spellcheck' => false,
-            'step'       => 0,
+            'step'       => 0.0,
         ];
 
         // Works on user settings definitions
