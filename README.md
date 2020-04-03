@@ -149,11 +149,9 @@ Full documentation on [Mozilla Number page](https://developer.mozilla.org/en-US/
 
 | Variable      | Type    | Default value if not set | Accepted values |
 | ------------- | ------- | ------------------------ | --------------- |
-| `max`         | Integer | *empty* | *empty* |
-| `min`         | Integer | *empty* | *empty* |
-| `step`        | Integer | *empty* | integer, to read as `number` |
-
-This `number` type will display `max` and `min` values arround the field itself.
+| `max`         | Float | *empty* | *empty* |
+| `min`         | Float | *empty* | *empty* |
+| `step`        | Float | *empty* | *empty* |
 
 ### Password type
 
@@ -172,11 +170,11 @@ Full documentation on [Mozilla Range page](https://developer.mozilla.org/en-US/d
 
 | Variable      | Type    | Default value if not set | Accepted values |
 | ------------- | ------- | ------------------------ | --------------- |
-| `max`         | Integer | *empty* | *empty* |
-| `min`         | Integer | *empty* | *empty* |
-| `step`        | Integer | *empty* | integer, to read as `number` |
+| `max`         | Float | *empty* | *empty* |
+| `min`         | Float | *empty* | *empty* |
+| `step`        | Float | *empty* | *empty* |
 
-This `range` type will display `max` and `min` values arround the field itself, with value in an `output` HTML tag.
+This `range` type will display an input `number` HTML tag with the field value.
 
 ### Search type
 
