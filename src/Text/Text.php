@@ -122,6 +122,7 @@ class Text extends Field
             $attrs  = isset($vars['settings']['max']) ? ' max="'.$vars['settings']['max'].'"' : '';
             $attrs .= isset($vars['settings']['min']) ? ' min="'.$vars['settings']['min'].'"' : '';
             $attrs .= isset($vars['settings']['step']) ? ' step="'.$vars['settings']['step'].'"' : '';
+            $attrs .= isset($vars['settings']['datalist']) ? ' list="'.$vars['identifier'].'-list"' : '';
 
             return $attrs;
         }
@@ -139,7 +140,7 @@ class Text extends Field
         }
 
         // URL attributes
-        if ('url' === $vars['type'] && !empty($vars['settings']['datalist'])) {
+        if ('url' === $vars['type'] && isset($vars['settings']['datalist'])) {
             return ' list="'.$vars['identifier'].'-list"';
         }
 
@@ -214,9 +215,10 @@ class Text extends Field
         // Date and Number cases
         if (in_array($type, ['date', 'datetime-local', 'month', 'number', 'range', 'time', 'week'])) {
             $mixed = array_merge([
-                'max'  => $defaults['max'],
-                'min'  => $defaults['min'],
-                'step' => $defaults['step'],
+                'max'      => $defaults['max'],
+                'min'      => $defaults['min'],
+                'step'     => $defaults['step'],
+                'datalist' => $defaults['datalist'],
             ], $allcases, $settings);
 
             return [
@@ -228,6 +230,7 @@ class Text extends Field
                 'min'      => $mixed['min'],
                 'readonly' => $mixed['readonly'],
                 'step'     => $mixed['step'],
+                'datalist' => $mixed['datalist'],
             ];
         }
 

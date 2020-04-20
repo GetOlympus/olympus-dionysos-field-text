@@ -170,9 +170,10 @@ Full documentation on [Mozilla Range page](https://developer.mozilla.org/en-US/d
 
 | Variable      | Type    | Default value if not set | Accepted values |
 | ------------- | ------- | ------------------------ | --------------- |
-| `max`         | Float | *empty* | *empty* |
-| `min`         | Float | *empty* | *empty* |
-| `step`        | Float | *empty* | *empty* |
+| `datalist`    | Array   | *empty* | list of suggestions users can pick to automatically fill the control's value |
+| `max`         | Float   | *empty* | *empty* |
+| `min`         | Float   | *empty* | *empty* |
+| `step`        | Float   | *empty* | *empty* |
 
 This `range` type will display an input `number` HTML tag with the field value.
 
@@ -261,15 +262,14 @@ echo $text;
 
 ## Release History
 
+0.0.21
+- Enable `datalist` suggestions for `range` type
+
 0.0.20
 - Fix range and number stepper which can contains float value
 
 0.0.19
 - Add new `url` type with `datalist` suggestions
-
-0.0.18
-- New Olympus components compatibility
-- Change repository to be a part of Dionysos fields
 
 ## Contributing
 
