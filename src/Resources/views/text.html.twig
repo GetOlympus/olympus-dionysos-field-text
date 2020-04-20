@@ -23,7 +23,7 @@
             {% endif %}
         {% endif %}
 
-        {% if type == 'url' and settings.datalist is not empty %}
+        {% if settings.datalist is not empty %}
             <datalist id="{{ identifier }}-list">
                 {% for item in settings.datalist %}
                     <option value="{{ item }}" />
