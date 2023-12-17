@@ -262,6 +262,9 @@ echo $text;
 
 ## Release History
 
+0.0.22
+- Change main DIV id to avoid HTML conflicts for labels
+
 0.0.21
 - Enable `datalist` suggestions for `range` type
 

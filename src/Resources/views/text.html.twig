@@ -4,7 +4,7 @@
 {% block label %}<label for="{{ identifier }}">{{ title|raw }}</label>{% endblock %}
 
 {% block field %}
-    <div id="{{ identifier }}-text" class="dionysos-field text {{ type }}">
+    <div id="{{ identifier }}-wrap" class="dionysos-field text {{ type }}">
         {% if type == 'hidden' %}
             <input type="{{ type }}" name="{{ name }}" value="{{ value }}" />
         {% else %}
@@ -34,11 +34,9 @@
         {% if type == 'range' %}
             <script>
                 (function($) {
-                    $(document).ready(function() {
-                        $("#{{ identifier }}-text").dionysosRange({
-                            source: "#{{ identifier }}",
-                            value: "#{{ identifier }}-val"
-                        });
+                    $("#{{ identifier }}-wrap").dionysosRange({
+                        source: "#{{ identifier }}",
+                        value: "#{{ identifier }}-val"
                     });
                 })(jQuery);
             </script>
