@@ -1,4 +1,12 @@
+<img src="https://github.com/GetOlympus/olympus-dionysos-field-text/blob/master/assets/field-text.png" align="left" />
+
 # Dionysos Text Field
+
+[![Olympus Component][olympus-image]][olympus-url]
+[![CodeFactor Grade][codefactor-image]][codefactor-url]
+[![Packagist Version][packagist-image]][packagist-url]
+[![MIT][license-image]][license-blob]
+
 > This component is a part of the **Olympus Dionysos fields** for **WordPress**.  
 > It uses the default WordPress text field to display password, range, text, datetime, tel, and more fields.
 
@@ -8,16 +16,9 @@ composer require getolympus/olympus-dionysos-field-text
 
 ---
 
-[![Olympus Component][olympus-image]][olympus-url]
-[![CodeFactor Grade][codefactor-image]][codefactor-url]
-[![Packagist Version][packagist-image]][packagist-url]
-[![MIT][license-image]][license-blob]
+## Table of contents
 
----
-
-<p align="center">
-    <img src="https://github.com/GetOlympus/olympus-dionysos-field-text/blob/master/assets/field-text-64.png" />
-</p>
+[Field initialization](#field-initialization) • [Variables definition](#variables-definition) • [Settings definition](#settings-definition) • [Retrive data](#retrive-data) • [Release History](#release-history) • [Contributing](#contributing)
 
 ---
 
@@ -41,7 +42,7 @@ return \GetOlympus\Dionysos\Field\Text::build('my_text_field_id', [
 ]);
 ```
 
-## Variables definitions
+## Variables definition
 
 | Variable      | Type    | Default value if not set | Accepted values |
 | ------------- | ------- | ------------------------ | --------------- |
@@ -52,7 +53,7 @@ return \GetOlympus\Dionysos\Field\Text::build('my_text_field_id', [
 | `type`        | String  | `'text'` | see [Accepted type](#accepted-type) |
 | `settings`    | Array   | see [Field initialization](#field-initialization) | see [Settings definition](#settings-definition) |
 
-## Accepted type
+### Accepted type
 
 * `date` see [Date type](#date-type)
 * `datetime-local` see [Datetime-local type](#datetime-local-type)
@@ -262,17 +263,11 @@ echo $text;
 
 ## Release History
 
-0.0.22
-- Change main DIV id to avoid HTML conflicts for labels
-
-0.0.21
-- Enable `datalist` suggestions for `range` type
-
-0.0.20
-- Fix range and number stepper which can contains float value
-
-0.0.19
-- Add new `url` type with `datalist` suggestions
+| Version | Note |
+| :------ | :--- |
+| 0.0.22  | Change main DIV id to avoid HTML conflicts for labels |
+| 0.0.21  | Enable `datalist` suggestions for `range` type |
+| 0.0.20  | Fix range and number stepper which can contains float value |
 
 ## Contributing
 
