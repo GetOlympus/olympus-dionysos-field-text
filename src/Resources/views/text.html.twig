@@ -34,9 +34,11 @@
         {% if type == 'range' %}
             <script>
                 (function($) {
-                    $("#{{ identifier }}-wrap").dionysosRange({
-                        source: "#{{ identifier }}",
-                        value: "#{{ identifier }}-val"
+                    $(document).ready(function() {
+                        $("#{{ identifier }}-wrap").dionysosRange({
+                            source: "#{{ identifier }}",
+                            value: "#{{ identifier }}-val"
+                        });
                     });
                 })(jQuery);
             </script>
