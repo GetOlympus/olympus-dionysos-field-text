@@ -265,9 +265,9 @@ echo $text;
 
 | Version | Note |
 | :------ | :--- |
+| 0.0.23  | Fix jQuery integration on domReady |
 | 0.0.22  | Change main DIV id to avoid HTML conflicts for labels |
 | 0.0.21  | Enable `datalist` suggestions for `range` type |
-| 0.0.20  | Fix range and number stepper which can contains float value |
 
 ## Contributing
 
